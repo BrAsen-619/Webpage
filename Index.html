@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Modern Profile |KARTIGYA SHRESTHA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="Webpage.css" />
+  </head>
+  <body>
+    <div class="theme-toggle" id="themeToggle">
+      <i class="fas fa-moon"></i>
+    </div>
+
+    <div class="container">
+      <header>
+        <div class="profile-container">
+          <div class="photo-placeholder" id="photoPlaceholder">
+            <img
+              id="profileImage"
+              src="https://pps.whatsapp.net/v/t61.24694-24/467373976_1502478283902413_6357075229465753885_n.jpg?ccb=11-4&oh=01_Q5Aa2QGTdUzO2xOemVGRVDlralFuRT3MGTlrFTXXMvBK9DEW0A&oe=68BB01B3&_nc_sid=5e03e0&_nc_cat=108"
+              alt="Profile Photo"
+            />
+          </div>
+          <div class="info">
+            <h1 class="name" id="namePlaceholder">Kartigya Shrestha</h1>
+            <p class="email" id="emailPlaceholder">
+              Kartigyashrestha1234@gmail.com
+            </p>
+
+            <nav>
+              <div class="nav-item active" data-target="about">About</div>
+              <div class="nav-item" data-target="projects">Projects</div>
+              <div class="nav-item" data-target="contact">Contact</div>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- About Section -->
+        <div class="content-section active" id="about-section">
+          <div class="section reveal">
+            <h2>About Me</h2>
+            <p>
+              Hello! I'm a passionate designer and developer with a keen eye for
+              creating engaging digital experiences. I specialize in UI/UX
+              design and frontend development, blending aesthetics with
+              functionality.
+            </p>
+
+            <div class="skills">
+              <div class="skill">
+                <div class="skill-info">
+                  <span class="skill-name">UI/UX Design</span>
+                  <span class="skill-percent">90%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="90%"></div>
+                </div>
+              </div>
+
+              <div class="skill">
+                <div class="skill-info">
+                  <span class="skill-name">HTML/CSS</span>
+                  <span class="skill-percent">95%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="95%"></div>
+                </div>
+              </div>
+
+              <div class="skill">
+                <div class="skill-info">
+                  <span class="skill-name">JavaScript</span>
+                  <span class="skill-percent">85%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-width="85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section reveal">
+            <h2>My Stats</h2>
+            <div class="stats">
+              <div class="stat-box">
+                <h3>42+</h3>
+                <p>Projects</p>
+              </div>
+              <div class="stat-box">
+                <h3>5+</h3>
+                <p>Years Experience</p>
+              </div>
+              <div class="stat-box">
+                <h3>28</h3>
+                <p>Happy Clients</p>
+              </div>
+              <div class="stat-box">
+                <h3>12</h3>
+                <p>Awards</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="content-section" id="projects-section">
+          <div class="section">
+            <h2>My Projects</h2>
+            <p>
+              Here are some of my recent works that showcase my design and
+              development skills.
+            </p>
+
+            <div class="projects-grid">
+              <div class="project-card reveal">
+                <div class="project-img">
+                  <i class="fas fa-globe"></i>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">E-commerce Website</h3>
+                  <p class="project-desc">
+                    A fully responsive e-commerce platform with modern UI and
+                    seamless UX.
+                  </p>
+                </div>
+              </div>
+
+              <div class="project-card reveal">
+                <div class="project-img">
+                  <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Fitness App</h3>
+                  <p class="project-desc">
+                    A mobile application for tracking workouts and nutrition
+                    with clean design.
+                  </p>
+                </div>
+              </div>
+
+              <div class="project-card reveal">
+                <div class="project-img">
+                  <i class="fas fa-paint-brush"></i>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Design System</h3>
+                  <p class="project-desc">
+                    A comprehensive design system for consistent user
+                    interfaces.
+                  </p>
+                </div>
+              </div>
+
+              <div class="project-card reveal">
+                <div class="project-img">
+                  <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Analytics Dashboard</h3>
+                  <p class="project-desc">
+                    A data visualization dashboard with interactive charts and
+                    graphs.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="content-section" id="contact-section">
+          <div class="section">
+            <h2>Get In Touch</h2>
+            <p>
+              Have a project in mind or want to collaborate? Feel free to reach
+              out!
+            </p>
+
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" class="form-control" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" class="form-control" required />
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" class="form-control" required></textarea>
+              </div>
+
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-snapchat"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        </div>
+        <p>© 2025 Modern Profile. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script src="Webpage.js"></script>
+  </body>
+</html>
