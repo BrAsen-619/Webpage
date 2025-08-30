@@ -4,7 +4,9 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-        
+        .social-links a{
+                    text-decoration: none;
+        }
         :root {
             --primary: #6366f1;
             --secondary: #8b5cf6;
