@@ -21,7 +21,20 @@
             --header-gradient: linear-gradient(120deg, var(--primary), var(--secondary));
             --card-bg: rgba(0, 0, 0, 0.2);
         }
-        
+        .info a {
+    color: #e0e7ff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.info a:hover {
+    background: rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
         .light-theme {
             --primary: #4f46e5;
             --secondary: #7c3aed;
