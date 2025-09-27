@@ -2,8 +2,11 @@
 const userName = "Kartigya Shrestha";
 const userEmail = "kartigyashrestha1234@gmail.com";
 
-document.getElementById('namePlaceholder').textContent = userName;
-document.getElementById('emailPlaceholder').innerHTML = `<a href="mailto:${userEmail}">${userEmail}</a>`;
+const namePlaceholderEl = document.getElementById('namePlaceholder');
+if (namePlaceholderEl) namePlaceholderEl.textContent = userName;
+
+const emailPlaceholderEl = document.getElementById('emailPlaceholder');
+if (emailPlaceholderEl) emailPlaceholderEl.textContent = userEmail;
 
 // Animate skill bars on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -107,19 +110,28 @@ function initThemeToggle() {
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // Here you would normally send the form data to a server
-        // For this example, we'll just show an alert
-        alert(`Thank you for your message, ${name}! We'll get back to you at ${email} soon.`);
-        
-        // Reset form
-        contactForm.reset();
+        const form = e.target;
+        const data = new FormData(form);
+
+        // simple honeypot check
+        if (data.get('honeypot')) return;
+
+        try {
+            const res = await fetch(form.action, {
+                method: form.method || 'POST',
+                body: data,
+            });
+            const json = await res.json().catch(() => ({}));
+            if (res.ok) {
+                alert('Message sent — thank you!');
+                form.reset();
+            } else {
+                alert('Submission error: ' + (json.message || res.status));
+            }
+        } catch (err) {
+            alert('Network error: ' + err.message + '\nIf you are testing locally, run a local server (see instructions).');
+        }
     });
 }
