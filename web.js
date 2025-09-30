@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize theme toggle
     initThemeToggle();
-    
-    // Initialize contact form
+
+    // Initialize contact form handler (added)
     initContactForm();
 });
 
@@ -53,21 +53,23 @@ function initScrollAnimations() {
 function initNavigation() {
     const navItems = document.querySelectorAll('.nav-item');
     const contentSections = document.querySelectorAll('.content-section');
-    
+
+    if (!navItems.length || !contentSections.length) return; // guard
+
     navItems.forEach(item => {
         item.addEventListener('click', function() {
             const target = this.getAttribute('data-target');
-            
+
             // Update active nav item
             navItems.forEach(navItem => navItem.classList.remove('active'));
             this.classList.add('active');
-            
+
             // Show corresponding section
             contentSections.forEach(section => {
                 section.classList.remove('active');
                 if (section.id === `${target}-section`) {
                     section.classList.add('active');
-                    
+
                     // Trigger scroll animations for the new section
                     setTimeout(() => {
                         initScrollAnimations();
@@ -81,57 +83,88 @@ function initNavigation() {
 // Theme toggle
 function initThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return; // guard
     const icon = themeToggle.querySelector('i');
-    
+
     // Check for saved theme preference or respect OS preference
-    if (localStorage.getItem('theme') === 'light' || 
-        (window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage.getItem('theme'))) {
+    if (localStorage.getItem('theme') === 'light' ||
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches && !localStorage.getItem('theme'))) {
         document.body.classList.add('light-theme');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+        if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
     }
-    
+
     themeToggle.addEventListener('click', function() {
         document.body.classList.toggle('light-theme');
-        
+
         if (document.body.classList.contains('light-theme')) {
             localStorage.setItem('theme', 'light');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
+            if (icon) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
         } else {
             localStorage.setItem('theme', 'dark');
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
+            if (icon) { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
         }
     });
 }
 
-// Contact form
+/* Add this function near the other init* functions */
 function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const data = new FormData(form);
+  const form = document.getElementById('contactForm');
+  if (!form) return; // no form on this page
 
-        // simple honeypot check
-        if (data.get('honeypot')) return;
+  // ensure small status element (optional)
+  let statusEl = form.querySelector('.form-status');
+  if (!statusEl) {
+    statusEl = document.createElement('div');
+    statusEl.className = 'form-status';
+    statusEl.style.marginTop = '8px';
+    form.appendChild(statusEl);
+  }
 
-        try {
-            const res = await fetch(form.action, {
-                method: form.method || 'POST',
-                body: data,
-            });
-            const json = await res.json().catch(() => ({}));
-            if (res.ok) {
-                alert('Message sent — thank you!');
-                form.reset();
-            } else {
-                alert('Submission error: ' + (json.message || res.status));
-            }
-        } catch (err) {
-            alert('Network error: ' + err.message + '\nIf you are testing locally, run a local server (see instructions).');
-        }
-    });
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    // honeypot check
+    if (data.get('honeypot')) return;
+
+    // local-file check
+    if (window.location.protocol === 'file:') {
+      alert('Testing locally: start a local server (python -m http.server 8000) and try again.');
+      return;
+    }
+
+    statusEl.textContent = 'Sending...';
+    statusEl.style.color = '#444';
+
+    try {
+      const res = await fetch(form.action, {
+        method: (form.method || 'POST').toUpperCase(),
+        body: data,
+        redirect: 'follow'
+      });
+
+      const text = await res.text();
+      let json;
+      try { json = JSON.parse(text); } catch { json = { raw: text }; }
+
+      if (res.ok) {
+        // main requested change: show thank-you alert
+        alert('Thank you — your message has been sent. I will contact you soon.');
+        statusEl.textContent = 'Message sent — thank you!';
+        statusEl.style.color = 'green';
+        form.reset();
+      } else {
+        const msg = (json && json.message) ? json.message : `Error ${res.status}`;
+        alert('Submission error: ' + msg);
+        statusEl.textContent = 'Submission error: ' + msg;
+        statusEl.style.color = 'red';
+      }
+    } catch (err) {
+      console.error('[contact] network error', err);
+      alert('Network error: ' + (err.message || err.name));
+      statusEl.textContent = 'Network error: ' + (err.message || err.name);
+      statusEl.style.color = 'red';
+    }    
+  });
 }
