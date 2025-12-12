@@ -1,0 +1,45 @@
+/* ============================================
+   BODY & CONTAINER LAYOUT
+   ============================================ */
+
+body {
+    background: var(--bg-gradient);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background: var(--glass-dark);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border);
+    animation: containerSlide 0.8s ease-out;
+}
+
+/* ============================================
+   CONTENT SECTION
+   ============================================ */
+
+.content {
+    padding: 40px 30px;
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+    display: block;
+}

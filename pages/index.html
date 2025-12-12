@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME | KARTIGYA SHRESTHA</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+      <header>
+        <div class="profile-container">
+            <div class="photo-placeholder" id="photoPlaceholder">
+            <img id="profileImage" loading="lazy" src="../img/me.jpg" alt="Profile Photo" />
+          </div>
+          <div class="info">
+            <h1 class="name" id="namePlaceholder">
+              <span class="typewriter"></span>
+              <span class="cursor"></span>
+            </h1>
+            <span id="emailPlaceholder"></span>
+            <nav>
+              <a href="index.html" class="nav-item active">Home</a>
+              <a href="about.html" class="nav-item" data-target="about">About</a>
+              <a href="projects.html" class="nav-item" data-target="projects">Projects</a>
+              <a href="contact.html" class="nav-item" data-target="contact">Contact</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- Home Section - Header Display Only -->
+        <div class="content-section active" id="home-section">
+          <div class="section reveal">
+            <h2>Welcome</h2>
+            <p>
+              Hello! I'm Kartigya Shrestha, a passionate designer and developer 
+              with a keen eye for creating engaging digital experiences. I specialize 
+              in UI/UX design and frontend development, blending aesthetics with 
+              functionality.
+            </p>
+            <p>
+              With a strong foundation in HTML, CSS, and JavaScript, I create beautiful, 
+              responsive websites that leave lasting impressions. My approach combines 
+              creative design thinking with practical development skills to deliver 
+              solutions that not only look great but also perform exceptionally.
+            </p>
+            <p>
+              Whether you're looking to build a personal brand, showcase your work, or 
+              create an engaging web experience, I'm here to help bring your vision to life. 
+              Explore my portfolio to see what I've been working on, learn more about my 
+              skills and experience, or get in touch if you'd like to collaborate!
+            </p>
+            <p style="margin-top: 20px; font-weight: 500;">Explore my work through the navigation menu above.</p>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="social-links">
+          <a
+            href="https://www.instagram.com/kartigya_stha?igsh=cTR1N3RzdGVtazY5"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            aria-label="Instagram"
+            ><i class="fab fa-instagram"></i
+          ></a>
+          <a
+            href="https://www.facebook.com/share/1FJUoZ2axr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            aria-label="Facebook"
+            ><i class="fab fa-facebook"></i
+          ></a>
+          <a
+            href="https://www.snapchat.com/add/brasen_stha?share_id=UKMFRhXU7bM&locale=en-GB"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            aria-label="Snapchat"
+            ><i class="fab fa-snapchat"></i
+          ></a>
+          <a
+            href="https://github.com/BrAsen-619"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            aria-label="Github"
+            ><i class="fab fa-github"></i
+          ></a>
+        </div>
+        <p>© All rights reserved. KARTIGYA SHRESTHA</p>
+      </footer>
+    </div>
+
+    <script src="../web.js" defer></script>
+  </body>
+</html>

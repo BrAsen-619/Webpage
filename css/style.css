@@ -1,0 +1,27 @@
+/* ============================================
+   MAIN CSS - IMPORTS ALL STYLES
+   ============================================ */
+
+/* Import Variables */
+@import url('variables.css');
+
+/* Import Global Reset & Base Styles */
+@import url('global.css');
+
+/* Import Animations & Keyframes */
+@import url('animations.css');
+
+/* Import Layout Styles */
+@import url('layout.css');
+
+/* Import Header & Component Styles */
+@import url('header.css');
+
+/* Import All Components (Sections, Stats, Skills, Projects, Footer) */
+@import url('components.css');
+
+/* Import Form Styles */
+@import url('forms.css');
+
+/* Import Responsive Media Queries */
+@import url('responsive.css');
