@@ -19,7 +19,10 @@
       <header>
         <div class="profile-container">
           <div class="photo-placeholder" id="photoPlaceholder">
-            <img id="profileImage" loading="lazy" src="../img/me.jpg" alt="Profile Photo" />
+            <picture>
+              <source srcset="../img/webp/me.webp" type="image/webp">
+              <img id="profileImage" loading="lazy" src="../img/me.jpg" alt="Profile Photo">
+            </picture>
           </div>
           <div class="info">
             <h1 class="name" id="namePlaceholder">
