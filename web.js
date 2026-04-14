@@ -1,6 +1,6 @@
 // Typewriter animation data
 const typewriterTexts = [
-    "Kartigya Shrestha",
+    "Brasen Shrestha",
     "A Web Developer",
     "UI/UX Designer",
     "Frontend Developer",
